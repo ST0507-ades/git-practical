@@ -10,7 +10,7 @@ const guessesRemainingText = document.getElementById('guesses-remaining');
 const keyboard = document.getElementById('keyboard');
 
 // HINT
-const guessResult = document.getElementById('guess-result');
+// const guessResult = document.getElementById('guess-result');
 
 // initialize the word display with underscores for each letter in the word
 let displayText = '';
