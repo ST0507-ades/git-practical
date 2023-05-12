@@ -107,4 +107,4 @@ keyboard.addEventListener('click', (event) => {
     if (target.classList.contains('key')) {
         processGuess(target.textContent);
     }
-});
+
