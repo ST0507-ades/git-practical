@@ -10,7 +10,7 @@ const guessesRemainingText = document.getElementById('guesses-remaining');
 const keyboard = document.getElementById('keyboard');
 
 // HINT
-const guessResult = document.getElementById('guess-result');
+const guessResult2 = document.getElementById('guess-result2');
 
 // initialize the word display with underscores for each letter in the word
 let displayText = '';
@@ -60,11 +60,11 @@ const updateKeyboard = () => {
 
 const processGuess = (guess) => {
     if (guessedLetters.has(guess)) {
-        guessResult.textContent = 'You already guessed that letter.';
+        guessResult2.textContent = 'You already guessed that letter.';
     } else if (guess.length !== 1) {
-        guessResult.textContent = 'Please enter a single letter.';
+        guessResult2.textContent = 'Please enter a single letter.';
     } else if (!/[a-z]/.test(guess)) {
-        guessResult.textContent = 'Please enter a letter.';
+        guessResult2.textContent = 'Please enter a letter.';
     } else {
         guessedLetters.add(guess);
 
@@ -78,7 +78,7 @@ const processGuess = (guess) => {
             }
             wordDisplay.textContent = displayArray.join(' ');
             if (!wordDisplay.textContent.includes('_')) {
-                guessResult.textContent = 'Congratulations, you won!';
+                guessResult2.textContent = 'Congratulations, you won!';
                 disableButtons();
             }
         } else {
@@ -86,10 +86,10 @@ const processGuess = (guess) => {
             guessesRemaining--;
             guessesRemainingText.textContent = `Guesses remaining: ${guessesRemaining}`;
             if (guessesRemaining === 0) {
-                guessResult.textContent = `Sorry, you lost. The word was "${word}".`;
+                guessResult2.textContent = `Sorry, you lost. The word was "${word}".`;
                 disableButtons();
             } else {
-                guessResult.textContent = 'Incorrect guess.';
+                guessResult2.textContent = 'Incorrect guess.';
             }
         }
 
