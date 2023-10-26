@@ -14,7 +14,6 @@ rangeText.textContent = `Guess a number between ${minNumber} and ${maxNumber}:`;
 
 guessButton.addEventListener('click', () => {
     const guess = parseInt(guessInput.value);
-
     if (isNaN(guess)) {
         gameResult.textContent = 'Please enter a valid number.';
     } else if (guess < minNumber || guess > maxNumber) {
