@@ -6,9 +6,9 @@ const guessesRemainingText = document.getElementById('guesses-remaining');
 const keyboard = document.getElementById('keyboard');
 
 // HINT
-const gameResult = document.getElementById('hangman-result');
-
 function startGame(word = words[Math.floor(Math.random() * words.length)], maxGuesses = 6) {
+    const gameResult = document.getElementById('hangman-result');
+    
     console.log(word);
     let guessedLetters = new Set();
     let guessesRemaining = maxGuesses;
