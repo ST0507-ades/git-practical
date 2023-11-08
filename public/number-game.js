@@ -11,7 +11,7 @@ const rangeText = document.getElementById('range');
 
 // display the latest min and max range
 rangeText.textContent = `Guess a number between ${minNumber} and ${maxNumber}:`;
-
+console.log(randomNumber);
 guessButton.addEventListener('click', () => {
     const guess = parseInt(guessInput.value);
 
