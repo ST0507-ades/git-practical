@@ -61,7 +61,7 @@ function startGame(word = words[Math.floor(Math.random() * words.length)], maxGu
 
     const processGuess = (guess) => {
         if (guessedLetters.has(guess)) {
-            game2Result.textContent = 'You already guessed that letter.';
+            gameResult2.textContent = 'You already guessed that letter.';
         } else if (guess.length !== 1) {
             game2Result.textContent = 'Please enter a single letter.';
         } else if (!/[a-z]/.test(guess)) {
