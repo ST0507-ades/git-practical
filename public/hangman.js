@@ -6,7 +6,7 @@ const guessesRemainingText = document.getElementById('guesses-remaining');
 const keyboard = document.getElementById('keyboard');
 
 // HINT
-const gameResult = document.getElementById('hangman-result');
+
 
 function startGame(word = words[Math.floor(Math.random() * words.length)], maxGuesses = 6) {
     console.log(word);
@@ -60,6 +60,7 @@ function startGame(word = words[Math.floor(Math.random() * words.length)], maxGu
     };
 
     const processGuess = (guess) => {
+        let gameResult = document.getElementById('hangman-result');
         if (guessedLetters.has(guess)) {
             gameResult.textContent = 'You already guessed that letter.';
         } else if (guess.length !== 1) {
