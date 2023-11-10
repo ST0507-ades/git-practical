@@ -23,6 +23,7 @@ body {
 }
 
 /* Style the keyboard buttons */
+/* Style the keyboard buttons */
 #keyboard {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
