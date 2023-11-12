@@ -6,7 +6,7 @@ const guessesRemainingText = document.getElementById('guesses-remaining');
 const keyboard = document.getElementById('keyboard');
 
 // HINT
-const gameResult = document.getElementById('hangman-result');
+const gameResultss = document.getElementById('hangman-result');
 
 function startGame(word = words[Math.floor(Math.random() * words.length)], maxGuesses = 6) {
     console.log(word);
@@ -61,11 +61,11 @@ function startGame(word = words[Math.floor(Math.random() * words.length)], maxGu
 
     const processGuess = (guess) => {
         if (guessedLetters.has(guess)) {
-            gameResult.textContent = 'You already guessed that letter.';
+            gameResultss.textContent = 'You already guessed that letter.';
         } else if (guess.length !== 1) {
-            gameResult.textContent = 'Please enter a single letter.';
+            gameResultss.textContent = 'Please enter a single letter.';
         } else if (!/[a-z]/.test(guess)) {
-            gameResult.textContent = 'Please enter a letter.';
+            gameResultss.textContent = 'Please enter a letter.';
         } else {
             guessedLetters.add(guess);
 
@@ -79,7 +79,7 @@ function startGame(word = words[Math.floor(Math.random() * words.length)], maxGu
                 }
                 wordDisplay.textContent = displayArray.join(' ');
                 if (!wordDisplay.textContent.includes('_')) {
-                    gameResult.textContent = 'Congratulations, you won!';
+                    gameResultss.textContent = 'Congratulations, you won!';
                     disableButtons();
                 }
             } else {
@@ -87,10 +87,10 @@ function startGame(word = words[Math.floor(Math.random() * words.length)], maxGu
                 guessesRemaining--;
                 guessesRemainingText.textContent = `Guesses remaining: ${guessesRemaining}`;
                 if (guessesRemaining === 0) {
-                    gameResult.textContent = `Sorry, you lost. The word was "${word}".`;
+                    gameResultss.textContent = `Sorry, you lost. The word was "${word}".`;
                     disableButtons();
                 } else {
-                    gameResult.textContent = 'Incorrect guess.';
+                    gameResultss.textContent = 'Incorrect guess.';
                 }
             }
 
