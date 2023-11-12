@@ -1,29 +1,19 @@
-// set up the hangman game
 const words = ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape', 'honeydew'];
 
 const wordDisplay = document.getElementById('word-display');
 const guessesRemainingText = document.getElementById('guesses-remaining');
 const keyboard = document.getElementById('keyboard');
-
-// HINT
-const gameResult = document.getElementById('hangman-result');
+const gameResult = document.getElementById('hangman-result'); // Hint: Identify the game result element
 
 function startGame(word = words[Math.floor(Math.random() * words.length)], maxGuesses = 6) {
-    console.log(word);
     let guessedLetters = new Set();
     let guessesRemaining = maxGuesses;
 
-    // initialize the word display with underscores for each letter in the word
-    let displayText = '';
-    for (let i = 0; i < word.length; i++) {
-        displayText += '_ ';
-    }
-    wordDisplay.textContent = displayText.trim();
+    const displayUnderscores = (word) => '_'.repeat(word.length).split('').join(' '); // Hint: Initialize word display with underscores
+    wordDisplay.textContent = displayUnderscores(word);
 
-    // update the guesses remaining display
     guessesRemainingText.textContent = `Guesses remaining: ${guessesRemaining}`;
 
-    // enable the buttons for the letters that have not been guessed yet
     const enableButtons = () => {
         const buttons = keyboard.querySelectorAll('.key');
         buttons.forEach((letterButton) => {
@@ -47,7 +37,6 @@ function startGame(word = words[Math.floor(Math.random() * words.length)], maxGu
         button.disabled = true;
     };
 
-    // update the keyboard display
     const updateKeyboard = () => {
         const buttons = keyboard.querySelectorAll('.key');
         buttons.forEach((letterButton) => {
@@ -62,15 +51,12 @@ function startGame(word = words[Math.floor(Math.random() * words.length)], maxGu
     const processGuess = (guess) => {
         if (guessedLetters.has(guess)) {
             gameResult.textContent = 'You already guessed that letter.';
-        } else if (guess.length !== 1) {
-            gameResult.textContent = 'Please enter a single letter.';
-        } else if (!/[a-z]/.test(guess)) {
-            gameResult.textContent = 'Please enter a letter.';
+        } else if (guess.length !== 1 || !/[a-z]/.test(guess)) {
+            gameResult.textContent = guess.length !== 1 ? 'Please enter a single letter.' : 'Please enter a letter.'; // Hint: Validate the guess input
         } else {
             guessedLetters.add(guess);
 
             if (word.includes(guess)) {
-                // the guess was correct
                 let displayArray = wordDisplay.textContent.split(' ');
                 for (let i = 0; i < word.length; i++) {
                     if (word[i] === guess) {
@@ -83,7 +69,6 @@ function startGame(word = words[Math.floor(Math.random() * words.length)], maxGu
                     disableButtons();
                 }
             } else {
-                // the guess was incorrect
                 guessesRemaining--;
                 guessesRemainingText.textContent = `Guesses remaining: ${guessesRemaining}`;
                 if (guessesRemaining === 0) {
@@ -99,16 +84,14 @@ function startGame(word = words[Math.floor(Math.random() * words.length)], maxGu
         }
     };
 
-    // initialize the keyboard display
     enableButtons();
 
-    // add event listeners to the keyboard buttons
-    keyboard.onclick = (event) => {
+    keyboard.addEventListener('click', (event) => {
         const target = event.target;
         if (target.classList.contains('key')) {
             processGuess(target.textContent);
         }
-    };
+    });
 
     return word;
 }
