@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 test('Number game wins correctly', async ({ page }) => {
-    await page.goto('http://localhost:3001');
+    await page.goto('http://localhost:3003');
 
     await expect(page.locator('#range')).toHaveText('Guess a number between 0 and 100:');
 
